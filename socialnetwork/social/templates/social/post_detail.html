@@ -35,6 +35,9 @@
             <div class="row justify-content-center mt-3 mb-5 border-bottom">
                 <div class="col-md-5 col-sm-12">
                 <p><strong>{{comment.author}}</strong>{{comment.created_on}}</p>
+                {% if request.user == comment.author %}
+                    <a href="{% url 'comment-delete' post.pk comment.pk %}" style="color: #333;">Delete</a>
+                {% endif %}
                 <p>{{comment.comment}}</p>
             </div>
         {% endfor %}
